@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "name": "LancherUI",
+    "version": "1.0",
+    "description": "a inserting LancherUI for some Web Applications",
+    "icons": {
+        "128": "icon_128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "128": "icon_128.png"
+        },
+        "default_title": "LancherUI",
+        "default_popup": "popup_menu.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [ "http://*/*", "https://*/*" ],
+            "js": [ "scripts/insert.js" ]
+        }
+    ]
+}

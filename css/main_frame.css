@@ -1,0 +1,33 @@
+#strLnchUI {
+    position: relative;
+}
+
+.main_frame {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+
+    height: 200px;
+    width: 700px;
+    background-color: #d3d3d3;
+    color: black;
+    padding: 10px;
+}
+
+.input {
+    width: 100%;
+    left: 0;
+    margin-bottom: 20px;
+}
+
+#cpttl1, #cpttl2 {
+    color:black;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 10px;
+}
+
+#cpttl1:hover, #cpttl2:hover {
+    text-decoration: underline;
+    text-decoration-color: red;
+}

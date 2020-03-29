@@ -15,8 +15,12 @@
     },
     "content_scripts": [
         {
-            "matches": [ "http://*/*", "https://*/*" ],
-            "js": [ "scripts/insert.js" ]
+            "matches": [ "http://nhentai.net/*", "https://nhentai.net/*" ],
+            "js": [ "scripts/insert.js", "scripts/jquery-3.4.1.min.js" ]
         }
+    ],
+    "web_accessible_resources": [
+        "css/main_frame.css",
+        "main_frame.html"
     ]
 }

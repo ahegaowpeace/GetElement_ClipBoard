@@ -12,7 +12,42 @@
     console.log(ttl);
     //タイトル２取得
     var ttl2 = document.getElementById('info').getElementsByTagName('h2')[0].innerHTML;
-    console.log(ttl2);
+    ttl2 = ttl2.replace(/\[[^\]]*\]/g, '');
+    ttl2 = ttl2.replace(/\([^\)]*\)/g, '');
+    ttl2 = ttl2.replace('!', '！');
+    ttl2 = ttl2.replace(' ', '');
+    ttl2 = ttl2.replace(' ', '');
+    ttl2 = ttl2.replace(' ', '');
+    ttl2 = ttl2.replace('　', '');
+    ttl2 = ttl2.replace('コミック', 'COMIC');
+    ttl2 = ttl2.replace('comic', 'COMIC');
+    ttl2 = ttl2.replace('Comic', 'COMIC');
+    if (ttl2.match(/\d\d\d\d年\d+月/)) {
+        var tmpdate = ttl2.match(/\d\d\d\d年\d+月/);
+        // 例：2017年7月
+        var tmpdate2 = tmpdate[0].replace('年', '');
+        tmpdate2 = tmpdate2.replace(/月[号]*/, '');
+        if (tmpdate2.length == 5) {
+            var year = tmpdate2.substr(0, 4);
+            var month = "0" + tmpdate2.substr(4);
+            tmpdate2 = year + month;
+        }
+        ttl2 = ttl2.replace(/\d\d\d\d年\d+月[号]*/, tmpdate2);
+        console.log(ttl2);
+    }
+    if (ttl2.match(/COMICグレープ/)) {
+        ttl2 = ttl2.replace('グレープ', 'Grape');
+        ttl2 = ttl2.replace('Vol.', '');
+    }
+    if (ttl2.match(/COMICメガストア/)) {
+        ttl2 = ttl2.replace('COMICメガストア', 'コミックメガストア');
+    }
+    if (ttl2.match(/COMICアンスリウム/)) {
+        ttl2 = ttl2.replace('COMICアンスリウム', 'アンスリウム');
+    }
+    if (ttl2.match(/COMIC阿吽改Vol\./)) {
+        ttl2 = ttl2.replace('COMIC阿吽改Vol\.', 'COMIC阿吽改');
+    }
     //ページ数取得
     var tmp = document.getElementById('info').getElementsByTagName('div');
     var pgnm = tmp[tmp.length - 5].innerHTML.slice(0, -6);

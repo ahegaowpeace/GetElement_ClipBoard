@@ -54,6 +54,11 @@
     if (ttl2.match(/COMIC阿吽改Vol\./)) {
         ttl2 = ttl2.replace('COMIC阿吽改Vol\.', 'COMIC阿吽改');
     }
+    if (ttl2.match(/ペンギンクラブ/)) {
+        if (ttl2.length < 18) {
+            ttl2 = 'COMIC' + ttl2;
+        }
+    }
     //ページ数取得
     var tmp = document.getElementById('info').getElementsByTagName('div');
     var pgnm = tmp[tmp.length - 5].innerHTML.slice(0, -6);

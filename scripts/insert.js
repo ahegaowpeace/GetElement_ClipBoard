@@ -15,6 +15,12 @@
     ttl2 = ttl2.replace(/\[[^\]]*\]/g, '');
     ttl2 = ttl2.replace(/\([^\)]*\)/g, '');
     ttl2 = ttl2.replace('!', '！');
+    ttl2 = ttl2.replace('!', '！');
+    ttl2 = ttl2.replace('?', '？');
+    ttl2 = ttl2.replace('-', 'ー');
+    ttl2 = ttl2.replace('\'', '');
+    ttl2 = ttl2.replace(' ', '');
+    ttl2 = ttl2.replace(' ', '');
     ttl2 = ttl2.replace(' ', '');
     ttl2 = ttl2.replace(' ', '');
     ttl2 = ttl2.replace(' ', '');

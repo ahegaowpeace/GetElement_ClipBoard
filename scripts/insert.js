@@ -9,54 +9,82 @@
     console.log(url);
     //タイトル１取得
     var ttl = document.getElementById('info').getElementsByTagName('h1')[0].innerHTML;
-    console.log(ttl);
+    ttl = ttl.replace(/\[[^\]]*\]/g, '');
+    ttl = ttl.replace(/\([^\)]*\)/g, '');
+    ttl = ttl.replace('!', '！');
+    ttl = ttl.replace('!', '！');
+    ttl = ttl.replace('?', '？');
+    ttl = ttl.replace('-', 'ー');
+    ttl = ttl.replace('\'', '');
+    ttl = ttl.replace(' ', '');
+    ttl = ttl.replace(' ', '');
+    ttl = ttl.replace(' ', '');
+    ttl = ttl.replace(' ', '');
+    ttl = ttl.replace(' ', '');
+    ttl = ttl.replace('　', '');
+    ttl = ttl.replace('コミック', 'COMIC');
+    ttl = ttl.replace('comic', 'COMIC');
+    ttl = ttl.replace('Comic', 'COMIC');
+    // 2008-12 → 200812
+    if (ttl.match(/\d\d\d\d.*\d\d/)) {
+        var date = ttl.match(/(\d\d\d\d).*(\d\d)/);
+        datestr = date[1] + date[2];
+        ttl = ttl.replace(/\d\d\d\d.*\d\d/, datestr);
+    }
+    ttl = ttl.replace('PenguinClub', 'ペンギンクラブ');
+    ttl = ttl.replace('PenguinClubSanzokuBan', 'ペンギンクラブ山賊版');
+    ttl = ttl.replace('PenguinClubSanzokuban', 'ペンギンクラブ山賊版');
     //タイトル２取得
-    var ttl2 = document.getElementById('info').getElementsByTagName('h2')[0].innerHTML;
-    ttl2 = ttl2.replace(/\[[^\]]*\]/g, '');
-    ttl2 = ttl2.replace(/\([^\)]*\)/g, '');
-    ttl2 = ttl2.replace('!', '！');
-    ttl2 = ttl2.replace('!', '！');
-    ttl2 = ttl2.replace('?', '？');
-    ttl2 = ttl2.replace('-', 'ー');
-    ttl2 = ttl2.replace('\'', '');
-    ttl2 = ttl2.replace(' ', '');
-    ttl2 = ttl2.replace(' ', '');
-    ttl2 = ttl2.replace(' ', '');
-    ttl2 = ttl2.replace(' ', '');
-    ttl2 = ttl2.replace(' ', '');
-    ttl2 = ttl2.replace('　', '');
-    ttl2 = ttl2.replace('コミック', 'COMIC');
-    ttl2 = ttl2.replace('comic', 'COMIC');
-    ttl2 = ttl2.replace('Comic', 'COMIC');
-    if (ttl2.match(/\d\d\d\d年\d+月/)) {
-        var tmpdate = ttl2.match(/\d\d\d\d年\d+月/);
-        // 例：2017年7月
-        var tmpdate2 = tmpdate[0].replace('年', '');
-        tmpdate2 = tmpdate2.replace(/月[号]*/, '');
-        if (tmpdate2.length == 5) {
-            var year = tmpdate2.substr(0, 4);
-            var month = "0" + tmpdate2.substr(4);
-            tmpdate2 = year + month;
+    if(document.getElementById('info').getElementsByTagName('h2')[0]) {
+        var ttl2 = document.getElementById('info').getElementsByTagName('h2')[0].innerHTML;
+        ttl2 = ttl2.replace(/\[[^\]]*\]/g, '');
+        ttl2 = ttl2.replace(/\([^\)]*\)/g, '');
+        ttl2 = ttl2.replace('!', '！');
+        ttl2 = ttl2.replace('!', '！');
+        ttl2 = ttl2.replace('?', '？');
+        ttl2 = ttl2.replace('-', 'ー');
+        ttl2 = ttl2.replace('\'', '');
+        ttl2 = ttl2.replace(' ', '');
+        ttl2 = ttl2.replace(' ', '');
+        ttl2 = ttl2.replace(' ', '');
+        ttl2 = ttl2.replace(' ', '');
+        ttl2 = ttl2.replace(' ', '');
+        ttl2 = ttl2.replace('　', '');
+        ttl2 = ttl2.replace('コミック', 'COMIC');
+        ttl2 = ttl2.replace('comic', 'COMIC');
+        ttl2 = ttl2.replace('Comic', 'COMIC');
+        if (ttl2.match(/\d\d\d\d年\d+月/)) {
+            var tmpdate = ttl2.match(/\d\d\d\d年\d+月/);
+            // 例：2017年7月
+            var tmpdate2 = tmpdate[0].replace('年', '');
+            tmpdate2 = tmpdate2.replace(/月[号]*/, '');
+            if (tmpdate2.length == 5) {
+                var year = tmpdate2.substr(0, 4);
+                var month = "0" + tmpdate2.substr(4);
+                tmpdate2 = year + month;
+            }
+            ttl2 = ttl2.replace(/\d\d\d\d年\d+月[号]*/, tmpdate2);
+            console.log(ttl2);
         }
-        ttl2 = ttl2.replace(/\d\d\d\d年\d+月[号]*/, tmpdate2);
-        console.log(ttl2);
-    }
-    if (ttl2.match(/COMICグレープ/)) {
-        ttl2 = ttl2.replace('グレープ', 'Grape');
-        ttl2 = ttl2.replace('Vol.', '');
-    }
-    if (ttl2.match(/COMICメガストア/)) {
-        ttl2 = ttl2.replace('COMICメガストア', 'コミックメガストア');
-    }
-    if (ttl2.match(/COMICアンスリウム/)) {
-        ttl2 = ttl2.replace('COMICアンスリウム', 'アンスリウム');
-    }
-    if (ttl2.match(/COMIC阿吽改Vol\./)) {
-        ttl2 = ttl2.replace('COMIC阿吽改Vol\.', 'COMIC阿吽改');
-    }
-    if (ttl2.match(/ペンギンクラブ/)) {
-        if (ttl2.length < 18) {
-            ttl2 = 'COMIC' + ttl2;
+        if (ttl2.match(/COMICグレープ/)) {
+            ttl2 = ttl2.replace('グレープ', 'Grape');
+            ttl2 = ttl2.replace('Vol.', '');
+        }
+        if (ttl2.match(/COMICメガストア/)) {
+            ttl2 = ttl2.replace('COMICメガストア', 'コミックメガストア');
+        }
+        if (ttl2.match(/COMICアンスリウム/)) {
+            ttl2 = ttl2.replace('COMICアンスリウム', 'アンスリウム');
+        }
+        if (ttl2.match(/COMIC阿吽改Vol\./)) {
+            ttl2 = ttl2.replace('COMIC阿吽改Vol\.', 'COMIC阿吽改');
+        }
+        if (ttl2.match(/ペンギンクラブ/)) {
+            if (ttl2.length < 18) {
+                ttl2 = 'COMIC' + ttl2;
+            }
+            ttl2 = ttl2.replace(/Vol\.\d.*/, '');
+            ttl2 = ttl2.replace(/VOL\.\d.*/, '');
         }
     }
     //ページ数取得

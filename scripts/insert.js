@@ -50,6 +50,8 @@
         ttl2 = ttl2.replace(' ', '');
         ttl2 = ttl2.replace(' ', '');
         ttl2 = ttl2.replace('　', '');
+        ttl2 = ttl2.replace('*', '＊');
+        ttl2 = ttl2.replace('Vol.', '');
         ttl2 = ttl2.replace('コミック', 'COMIC');
         ttl2 = ttl2.replace('comic', 'COMIC');
         ttl2 = ttl2.replace('Comic', 'COMIC');
@@ -85,6 +87,13 @@
             }
             ttl2 = ttl2.replace(/Vol\.\d.*/, '');
             ttl2 = ttl2.replace(/VOL\.\d.*/, '');
+        }
+        if (ttl2.match(/快楽天/)) {
+            ttl2 = ttl2.replace('COMIC', '');
+            ttl2 = ttl2.replace('COMlC', '');
+            ttl2 = ttl2.replace('Comic', '');
+            ttl2 = ttl2.replace('comic', '');
+            ttl2 = ttl2.replace('BEAST', 'ビースト');
         }
     }
     //ページ数取得

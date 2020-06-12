@@ -8,7 +8,10 @@
     var url = head + tmp;
     console.log(url);
     //タイトル１取得
-    var ttl = document.getElementById('info').getElementsByTagName('h1')[0].innerHTML;
+    //var ttl = document.getElementById('info').getElementsByTagName('h1')[0].innerHTML;
+    var ttlarry = document.getElementById('info').getElementsByTagName('h1')[0].getElementsByClassName('pretty');
+    var ttl = ttlarry[0].innerHTML;
+    this.console.log(ttl);
     ttl = ttl.replace(/\[[^\]]*\]/g, '');
     ttl = ttl.replace(/\([^\)]*\)/g, '');
     ttl = ttl.replace('!', '！');
@@ -36,7 +39,10 @@
     ttl = ttl.replace('PenguinClubSanzokuban', 'ペンギンクラブ山賊版');
     //タイトル２取得
     if(document.getElementById('info').getElementsByTagName('h2')[0]) {
-        var ttl2 = document.getElementById('info').getElementsByTagName('h2')[0].innerHTML;
+        //var ttl2 = document.getElementById('info').getElementsByTagName('h2')[0].innerHTML;
+        var ttl2arry = document.getElementById('info').getElementsByTagName('h2')[0].getElementsByClassName('pretty');
+        var ttl2 = ttl2arry[0].innerHTML;
+        this.console.log(ttl2);
         ttl2 = ttl2.replace(/\[[^\]]*\]/g, '');
         ttl2 = ttl2.replace(/\([^\)]*\)/g, '');
         ttl2 = ttl2.replace('!', '！');
@@ -66,7 +72,6 @@
                 tmpdate2 = year + month;
             }
             ttl2 = ttl2.replace(/\d\d\d\d年\d+月[号]*/, tmpdate2);
-            console.log(ttl2);
         }
         if (ttl2.match(/COMICグレープ/)) {
             ttl2 = ttl2.replace('グレープ', 'Grape');
@@ -98,8 +103,10 @@
     }
     //ページ数取得
     var tmp = document.getElementById('info').getElementsByTagName('div');
-    var pgnm = tmp[tmp.length - 5].innerHTML.slice(0, -6);
-    console.log(pgnm);
+    //var pgnm = tmp[tmp.length - 5].innerHTML.slice(0, -6);
+    var pgnmarry = tmp[tmp.length - 5].getElementsByTagName('span');
+    var pgnm = pgnmarry[1].innerHTML;
+    
 
     /*********/
     /*UI Part*/
@@ -163,7 +170,6 @@
         // コマンド作成
         var cmd2 = "python3.6 image.py " + ttl2 + " " + url + " " + pgnm + ";";
         copyFrom.textContent = cmd2;
-        console.log(cmd2);
         // bodyタグの要素を取得
         var bodyElm = document.getElementsByTagName("body")[0];
         // 子要素にテキストエリアを配置

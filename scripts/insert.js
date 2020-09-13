@@ -48,7 +48,7 @@
         ttl2 = ttl2.replace('!', '！');
         ttl2 = ttl2.replace('!', '！');
         ttl2 = ttl2.replace('?', '？');
-        ttl2 = ttl2.replace('-', 'ー');
+        //ttl2 = ttl2.replace('-', 'ー');
         ttl2 = ttl2.replace('\'', '');
         ttl2 = ttl2.replace(' ', '');
         ttl2 = ttl2.replace(' ', '');
@@ -58,6 +58,10 @@
         ttl2 = ttl2.replace('　', '');
         ttl2 = ttl2.replace('*', '＊');
         ttl2 = ttl2.replace('Vol.', '');
+        ttl2 = ttl2.replace('.', '');
+        ttl2 = ttl2.replace('.', '');
+        ttl2 = ttl2.replace('.', '');
+        ttl2 = ttl2.replace('+', '＋');
         ttl2 = ttl2.replace('コミック', 'COMIC');
         ttl2 = ttl2.replace('comic', 'COMIC');
         ttl2 = ttl2.replace('Comic', 'COMIC');
@@ -72,6 +76,13 @@
                 tmpdate2 = year + month;
             }
             ttl2 = ttl2.replace(/\d\d\d\d年\d+月[号]*/, tmpdate2);
+        }
+        if (ttl2.match(/COMIC/)) {
+            if (ttl2.match(/ゼロス/) || ttl2.match(/EROS/)) {
+                ttl2 = ttl2.replace('ゼロス', 'X-EROS');
+                ttl2 = ttl2.replace('#', '');
+                ttl2 = ttl2.replace('＃', '');
+            }
         }
         if (ttl2.match(/COMICグレープ/)) {
             ttl2 = ttl2.replace('グレープ', 'Grape');
